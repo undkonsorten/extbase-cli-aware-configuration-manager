@@ -1,0 +1,26 @@
+{
+    "name": "undkonsorten/extbase-cli-aware-configuration-manager",
+    "description": "Get Extbase injections working in your TYPO3 project by configuring the site to be used for settings and TypoScript",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
+	"require": {
+		"typo3/cms-core": "^13.4",
+		"typo3/cms-extbase": "^13.4"
+	},
+    "autoload": {
+        "psr-4": {
+            "Undkonsorten\\ExtbaseCliAwareConfigurationManager\\": "Classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Felix Althaus",
+			"email": "felix.althaus@undkonsorten.com"
+		}
+    ],
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "extbasecliawareconfigurationmanager"
+		}
+	}
+}
