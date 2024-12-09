@@ -77,7 +77,7 @@ final readonly class CommandLineInterfaceConfigurationManager
         private FrontendTypoScriptFactory $frontendTypoScriptFactory,
         private ConnectionPool $connectionPool,
         private SetRegistry $setRegistry,
-        private string $siteIdentifier,
+        private string $siteIdentifier = '',
     ) {}
 
     /**
@@ -274,10 +274,12 @@ final readonly class CommandLineInterfaceConfigurationManager
      */
     private function getCurrentPageId(): int
     {
+        if($this->siteIdentifier === ''){
+            throw new \Exception('There is not site identifier provided. Please provide one via Service.yaml or Service.php. Read README.md for more help.', 1731170914);
+        }
         $site = $this->siteFinder->getSiteByIdentifier($this->siteIdentifier);
         if ($site instanceof NullSite) {
-            // @TODO better exception
-            throw new \Exception('Neine hier', 1731170913);
+            throw new \Exception('The site with identifier '.$this->siteIdentifier.' can not be found', 1731170913);
         }
         return $site->getRootPageId();
     }
